@@ -186,7 +186,7 @@
 							<outputDirectory>${project.build.directory}/appassembler/lic</outputDirectory>
 							<resources>
 								<resource>
-									<directory>/</directory>
+									<directory>${project.basedir}</directory>
 									<includes>
 										<include>LICENSE</include>
 									</includes>
