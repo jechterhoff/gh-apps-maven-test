@@ -13,7 +13,7 @@ public class Main {
 		if (args.length > 0 && StringUtils.isNotBlank(args[0])) {
 			System.out.println(args[0]);
 		} else {
-			System.out.println("Hello World!");
+			System.out.println("Hello World! Test.");
 		}
 	}
 }
