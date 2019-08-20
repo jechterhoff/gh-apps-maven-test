@@ -1,3 +1,0 @@
-# Readme
-
-gh-pages readme
