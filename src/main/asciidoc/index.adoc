@@ -1,0 +1,36 @@
+:doctype: book
+:encoding: utf-8
+:lang: en
+:toc: macro
+:toc-title: Table of contents
+:toclevels: 5
+
+:toc-position: left
+
+:appendix-caption: Annex
+
+:numbered:
+:sectanchors:
+:sectnumlevels: 5
+
+= Heading 1
+
+:toc:
+
+The latest version of the project is {project-version}.
+
+== Heading 2
+
+This file was converted from AsciiDoc to HTML by the Maven Site module of the Asciidoctor Maven Plugin.
+
+image::images/tiger.png[Ghostscript Tiger]
+_By Ghostscript authors (GPL Ghostscript SVN: tiger.eps) [GPL (http://www.gnu.org/licenses/gpl.html)], via Wikimedia Commons_
+
+
+include::subpackage/include1.adoc[]
+
+include::subpackage/include2.adoc[]
+
+
+
+NOTE: Hey, note!

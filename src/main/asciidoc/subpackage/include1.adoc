@@ -1,0 +1,3 @@
+== Include 1
+
+Page from src/main/asciidoc/include1.adoc

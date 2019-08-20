@@ -1,0 +1,3 @@
+== Include 2
+
+Page from src/main/asciidoc/subpackage/include2.adoc

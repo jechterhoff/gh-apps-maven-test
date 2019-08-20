@@ -1,22 +1,37 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-
 	<groupId>org.example</groupId>
 	<artifactId>GitHubAppsMavenTest</artifactId>
 	<version>0.1.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-
 	<name>GitHubAppsMavenTest</name>
-
+	<description>An example project for testing GitHub apps on a maven based java project.</description>
+	<inceptionYear>2010</inceptionYear>
 	<scm>
 		<url>https://github.com/jechterhoff/gh-apps-maven-test</url>
 		<connection>scm:git:https://github.com/jechterhoff/gh-apps-maven-test.git</connection>
 		<developerConnection>scm:git:https://github.com/jechterhoff/gh-apps-maven-test.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
+	<issueManagement>
+		<system>GitHub</system>
+		<url>https://github.com/jechterhoff/gh-apps-maven-test/issues</url>
+	</issueManagement>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
+
+	<!-- <repositories> -->
+	<!-- <repository> -->
+	<!-- <id>mycila-repo</id> -->
+	<!-- <name>mycila repo</name> -->
+	<!-- <url>http://repo1.maven.org/maven2</url> -->
+	<!-- </repository> -->
+	<!-- </repositories> -->
 
 	<dependencies>
 		<dependency>
@@ -35,6 +50,23 @@
 			<version>4.10</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.codehaus.mojo/build-helper-maven-plugin -->
+		<dependency>
+			<groupId>org.codehaus.mojo</groupId>
+			<artifactId>build-helper-maven-plugin</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.mycila/license-maven-plugin -->
+		<!-- mvn license:format will ensure that the license headers (with includes 
+			and excludes as configured for the plugin) files will be updated if necessary. 
+			WARNING: When the build includes the fmt-maven-plugin - to check that Java 
+			source code adheres to google code formatting rules - you need to ensure 
+			that the license header file is also formatted correctly. -->
+		<dependency>
+			<groupId>com.mycila</groupId>
+			<artifactId>license-maven-plugin</artifactId>
+			<version>3.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<resources>
@@ -44,6 +76,62 @@
 			</resource>
 		</resources>
 		<plugins>
+			<!-- The build-helper-maven-plugin can be used to generate time stamp 
+				information for the maven build, and also other information. -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.codehaus.mojo</groupId> -->
+			<!-- <artifactId>build-helper-maven-plugin</artifactId> -->
+			<!-- <version>3.0.0</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>timestamp-property</id> -->
+			<!-- <goals> -->
+			<!-- <goal>timestamp-property</goal> -->
+			<!-- </goals> -->
+			<!-- <phase>validate</phase> -->
+			<!-- <configuration> -->
+			<!-- <name>build.year</name> -->
+			<!-- <pattern>yyyy</pattern> -->
+			<!-- <unit>year</unit> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+			<plugin>
+				<groupId>com.mycila</groupId>
+				<artifactId>license-maven-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<header>misc/license_header.txt</header>
+					<includes>
+						<include>src/**/*.java</include>
+					</includes>
+				</configuration>
+				<!-- The license-maven-plugin does support automatic checking of license 
+					headers. However, since the copyright year should be included, it is better 
+					to manually update the headers of all files before a new release. -->
+				<!-- <executions> -->
+				<!-- <execution> -->
+				<!-- <goals> -->
+				<!-- <goal>check</goal> -->
+				<!-- </goals> -->
+				<!-- <phase>test</phase> -->
+				<!-- </execution> -->
+				<!-- </executions> -->
+			</plugin>
+			<plugin>
+				<groupId>com.coveo</groupId>
+				<artifactId>fmt-maven-plugin</artifactId>
+				<version>2.9</version>
+				<executions>
+					<execution>
+						<phase>test</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>pl.project13.maven</groupId>
 				<artifactId>git-commit-id-plugin</artifactId>
@@ -194,6 +282,23 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>de.saumya.mojo</groupId> -->
+			<!-- <artifactId>rake-maven-plugin</artifactId> -->
+			<!-- <version>1.1.8</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>run-spec</id> -->
+			<!-- <phase>verify</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>rake</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <args>changelog</args> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 			<plugin>
 				<artifactId>maven-assembly-plugin</artifactId>
 				<version>3.1.1</version>
@@ -213,11 +318,75 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-deploy-plugin</artifactId> -->
+			<!-- <version>3.0.0-M1</version> -->
+			<!-- </plugin> -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<version>3.0.0-M1</version>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.1.1</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>javadoc</goal>
+						</goals>
+						<configuration>
+							<reportOutputDirectory>${project.build.directory}/gh-pages</reportOutputDirectory>
+							<destDir>javadoc</destDir>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.asciidoctor</groupId>
+				<artifactId>asciidoctor-maven-plugin</artifactId>
+				<version>1.5.8</version>
+				<configuration>
+					<sourceDirectory>src/main/asciidoc</sourceDirectory>
+					<outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
+					<imagesDir>./</imagesDir>
+					<preserveDirectories>true</preserveDirectories>
+					<sourceHighlighter>coderay</sourceHighlighter>
+					<backend>html5</backend>
+					<doctype>book</doctype>
+					<attributes>
+						<project-version>${project.version}</project-version>
+						<!-- <stylesheet>my-theme.css</stylesheet> -->
+					</attributes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>output-html</id>
+						<phase>package</phase>
+						<goals>
+							<goal>process-asciidoc</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<configuration>
+					<serverId>github.com</serverId>
+					<pubScmUrl>scm:git:https://github.com/jechterhoff/gh-apps-maven-test.git</pubScmUrl>
+					<scmBranch>gh-pages</scmBranch>
+					<checkinComment>Update documentation</checkinComment>
+					<content>${project.build.directory}/gh-pages</content>
+					<siteOutputEncoding>UTF-8</siteOutputEncoding>
+					<tryUpdate>true</tryUpdate>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>publish-scm</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-release-plugin</artifactId>
@@ -227,37 +396,69 @@
 					<scmCommentPrefix>[maven-release-plugin][skip ci]</scmCommentPrefix>
 				</configuration>
 			</plugin>
+
+
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-site-plugin</artifactId> -->
+			<!-- <version>3.8.2</version> -->
+			<!-- <configuration> -->
+			<!-- <generateReports>true</generateReports> -->
+			<!-- <generateSitemap>true</generateSitemap> -->
+			<!-- <relativizeDecorationLinks>false</relativizeDecorationLinks> -->
+			<!-- <locales>en</locales> -->
+			<!-- <inputEncoding>UTF-8</inputEncoding> -->
+			<!-- <outputEncoding>UTF-8</outputEncoding> -->
+			<!-- <asciidoc> -->
+			<!-- optional site-wide AsciiDoc attributes -->
+			<!-- <attributes> -->
+			<!-- <icons>font</icons> -->
+			<!-- <source-highlighter>coderay</source-highlighter> -->
+			<!-- <coderay-css>style</coderay-css> -->
+			<!-- <toclevels>2</toclevels> -->
+			<!-- </attributes> -->
+			<!-- </asciidoc> -->
+			<!-- </configuration> -->
+			<!-- <dependencies> -->
+			<!-- <dependency> -->
+			<!-- <groupId>org.asciidoctor</groupId> -->
+			<!-- <artifactId>asciidoctor-maven-plugin</artifactId> -->
+			<!-- <version>1.6.0</version> -->
+			<!-- </dependency> -->
+			<!-- </dependencies> -->
+			<!-- </plugin> -->
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings 
-					only. It has no influence on the Maven build itself. -->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.apache.maven.plugins</groupId>
-										<artifactId>maven-dependency-plugin</artifactId>
-										<versionRange>[2.1,)</versionRange>
-										<goals>
-											<goal>copy-dependencies</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore />
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+
+		<!-- <pluginManagement> -->
+		<!-- <plugins> -->
+		<!-- This plugin's configuration is used to store Eclipse m2e settings -->
+		<!-- only. It has no influence on the Maven build itself. -->
+		<!-- <plugin> -->
+		<!-- <groupId>org.eclipse.m2e</groupId> -->
+		<!-- <artifactId>lifecycle-mapping</artifactId> -->
+		<!-- <version>1.0.0</version> -->
+		<!-- <configuration> -->
+		<!-- <lifecycleMappingMetadata> -->
+		<!-- <pluginExecutions> -->
+		<!-- <pluginExecution> -->
+		<!-- <pluginExecutionFilter> -->
+		<!-- <groupId>org.apache.maven.plugins</groupId> -->
+		<!-- <artifactId>maven-dependency-plugin</artifactId> -->
+		<!-- <versionRange>[2.1,)</versionRange> -->
+		<!-- <goals> -->
+		<!-- <goal>copy-dependencies</goal> -->
+		<!-- </goals> -->
+		<!-- </pluginExecutionFilter> -->
+		<!-- <action> -->
+		<!-- <ignore /> -->
+		<!-- </action> -->
+		<!-- </pluginExecution> -->
+		<!-- </pluginExecutions> -->
+		<!-- </lifecycleMappingMetadata> -->
+		<!-- </configuration> -->
+		<!-- </plugin> -->
+		<!-- </plugins> -->
+		<!-- </pluginManagement> -->
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.wagon</groupId>
@@ -266,4 +467,55 @@
 			</extension>
 		</extensions>
 	</build>
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-project-info-reports-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-changes-plugin</artifactId>
+				<version>2.12.1</version>
+				<configuration>
+					<githubAPIServerId>github.com</githubAPIServerId>
+				</configuration>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<!-- The changes-report requires a changes.xml file where all changes 
+								of a release are explicitly listed. We would want to have that created automatically, 
+								but that does not seem to be possible right now. -->
+							<!-- <report>changes-report</report> -->
+							<report>github-report</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+	<!-- <reporting> -->
+	<!-- <plugins> -->
+	<!-- <plugin> -->
+	<!-- <groupId>org.apache.maven.plugins</groupId> -->
+	<!-- <artifactId>maven-changes-plugin</artifactId> -->
+	<!-- <version>2.12.1</version> -->
+	<!-- <reportSets> -->
+	<!-- <reportSet> -->
+	<!-- <reports> -->
+	<!-- <report>github-report</report> -->
+	<!-- </reports> -->
+	<!-- </reportSet> -->
+	<!-- </reportSets> -->
+	<!-- </plugin> -->
+	<!-- <plugin> -->
+	<!-- <artifactId>maven-javadoc-plugin</artifactId> -->
+	<!-- </plugin> -->
+	<!-- <plugin> -->
+	<!-- <groupId>org.codehaus.mojo</groupId> -->
+	<!-- <artifactId>jxr-maven-plugin</artifactId> -->
+	<!-- </plugin> -->
+	<!-- </plugins> -->
+	<!-- </reporting> -->
 </project>

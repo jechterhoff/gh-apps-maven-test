@@ -1,38 +1,43 @@
+/**
+ * GitHub Apps Maven Test
+ *
+ * <p>Copyright 2019 Johannes Echterhoff
+ *
+ * <p>Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file
+ * except in compliance with the License. You may obtain a copy of the License at
+ *
+ * <p>http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * <p>Unless required by applicable law or agreed to in writing, software distributed under the
+ * License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ * express or implied. See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package org.example.GitHubAppsMavenTest;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
-/**
- * Unit test for simple App.
- */
-public class MainTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public MainTest( String testName )
-    {
-        super( testName );
-    }
+/** Unit test for simple App. */
+public class MainTest extends TestCase {
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( MainTest.class );
-    }
+  /**
+   * Create the test case
+   *
+   * @param testName name of the test case
+   */
+  public MainTest(String testName) {
+    super(testName);
+  }
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+  /** @return the suite of tests being tested */
+  public static Test suite() {
+    return new TestSuite(MainTest.class);
+  }
+
+  /** Rigourous Test :-) */
+  public void testApp() {
+    assertTrue(true);
+  }
 }
