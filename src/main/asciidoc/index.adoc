@@ -31,6 +31,8 @@ include::subpackage/include1.adoc[]
 
 include::subpackage/include2.adoc[]
 
+link:javadoc/index.html[Javadoc]
+
 
 
 NOTE: Hey, note!

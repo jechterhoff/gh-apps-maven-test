@@ -366,26 +366,26 @@
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<artifactId>maven-scm-publish-plugin</artifactId>
-				<configuration>
-					<serverId>github.com</serverId>
-					<pubScmUrl>scm:git:https://github.com/jechterhoff/gh-apps-maven-test.git</pubScmUrl>
-					<scmBranch>gh-pages</scmBranch>
-					<checkinComment>Update documentation</checkinComment>
-					<content>${project.build.directory}/gh-pages</content>
-					<siteOutputEncoding>UTF-8</siteOutputEncoding>
-					<tryUpdate>true</tryUpdate>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>publish-scm</goal>
-						</goals>
-						<phase>package</phase>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-scm-publish-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<serverId>github.com</serverId> -->
+<!-- 					<pubScmUrl>scm:git:https://github.com/jechterhoff/gh-apps-maven-test.git</pubScmUrl> -->
+<!-- 					<scmBranch>gh-pages</scmBranch> -->
+<!-- 					<checkinComment>Update documentation</checkinComment> -->
+<!-- 					<content>${project.build.directory}/gh-pages</content> -->
+<!-- 					<siteOutputEncoding>UTF-8</siteOutputEncoding> -->
+<!-- 					<tryUpdate>true</tryUpdate> -->
+<!-- 				</configuration> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>publish-scm</goal> -->
+<!-- 						</goals> -->
+<!-- 						<phase>package</phase> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
