@@ -366,26 +366,51 @@
 					</execution>
 				</executions>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<artifactId>maven-scm-publish-plugin</artifactId> -->
-<!-- 				<configuration> -->
-<!-- 					<serverId>github.com</serverId> -->
-<!-- 					<pubScmUrl>scm:git:https://github.com/jechterhoff/gh-apps-maven-test.git</pubScmUrl> -->
-<!-- 					<scmBranch>gh-pages</scmBranch> -->
-<!-- 					<checkinComment>Update documentation</checkinComment> -->
-<!-- 					<content>${project.build.directory}/gh-pages</content> -->
-<!-- 					<siteOutputEncoding>UTF-8</siteOutputEncoding> -->
-<!-- 					<tryUpdate>true</tryUpdate> -->
-<!-- 				</configuration> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<goals> -->
-<!-- 							<goal>publish-scm</goal> -->
-<!-- 						</goals> -->
-<!-- 						<phase>package</phase> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
+			<!-- From https://stackoverflow.com/questions/28859942/how-do-i-get-the-maven-gpg-plugin-to-use-a-passphrase-from-environment-variable/28860520, 
+				but untested due to lack of time. When manually performing a release, just 
+				watch out for the gpg prompt for now. -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-gpg-plugin</artifactId> -->
+			<!-- <version>1.6</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>sign-artifacts</id> -->
+			<!-- <phase>verify</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>sign</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- This is necessary for gpg to not try to use the pinentry programs -->
+			<!-- <gpgArguments> -->
+			<!-- Connect the two dashes in arg, i.e. remove the space. -->
+			<!-- <arg>- -pinentry-mode</arg> -->
+			<!-- <arg>loopback</arg> -->
+			<!-- </gpgArguments> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+			<plugin>
+				<artifactId>maven-scm-publish-plugin</artifactId>
+				<configuration>
+					<serverId>github.com</serverId>
+					<pubScmUrl>scm:git:https://github.com/jechterhoff/gh-apps-maven-test.git</pubScmUrl>
+					<scmBranch>gh-pages</scmBranch>
+					<checkinComment>Update documentation</checkinComment>
+					<content>${project.build.directory}/gh-pages</content>
+					<siteOutputEncoding>UTF-8</siteOutputEncoding>
+					<tryUpdate>true</tryUpdate>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>publish-scm</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
