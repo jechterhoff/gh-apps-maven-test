@@ -22,6 +22,10 @@
       </includes>
     </fileSet>
     <fileSet>
+      <directory>target/documentation</directory>
+      <outputDirectory>/documentation</outputDirectory>
+    </fileSet>
+    <fileSet>
       <directory>target/appassembler/shell</directory>
       <outputDirectory>/</outputDirectory>
     </fileSet>
