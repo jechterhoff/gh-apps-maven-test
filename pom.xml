@@ -345,7 +345,7 @@
 				<version>2.2.2</version>
 				<configuration>
 					<sourceDirectory>src/main/asciidoc</sourceDirectory>
-					<outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
+					<outputDirectory>${project.build.directory}/gh-pages/${project.version}</outputDirectory>
 					<imagesDir>./</imagesDir>
 					<preserveDirectories>true</preserveDirectories>
 					<sourceHighlighter>coderay</sourceHighlighter>
@@ -356,15 +356,15 @@
 						<!-- <stylesheet>my-theme.css</stylesheet> -->
 					</attributes>
 				</configuration>
-				<executions>
-					<execution>
-						<id>output-html</id>
-						<phase>package</phase>
-						<goals>
-							<goal>process-asciidoc</goal>
-						</goals>
-					</execution>
-				</executions>
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>output-html</id> -->
+<!-- 						<phase>package</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>process-asciidoc</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
 			</plugin>
 			<!-- From https://stackoverflow.com/questions/28859942/how-do-i-get-the-maven-gpg-plugin-to-use-a-passphrase-from-environment-variable/28860520, 
 				but untested due to lack of time. When manually performing a release, just 
@@ -393,6 +393,7 @@
 			<!-- </plugin> -->
 			<plugin>
 				<artifactId>maven-scm-publish-plugin</artifactId>
+				<version>3.1.0</version>
 				<configuration>
 					<serverId>github.com</serverId>
 					<pubScmUrl>scm:git:https://github.com/jechterhoff/gh-apps-maven-test.git</pubScmUrl>
@@ -402,14 +403,14 @@
 					<siteOutputEncoding>UTF-8</siteOutputEncoding>
 					<tryUpdate>true</tryUpdate>
 				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>publish-scm</goal>
-						</goals>
-						<phase>package</phase>
-					</execution>
-				</executions>
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<goals> -->
+<!-- 							<goal>publish-scm</goal> -->
+<!-- 						</goals> -->
+<!-- 						<phase>package</phase> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
 			</plugin>
 
 			<plugin>
@@ -417,6 +418,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
+      				<preparationGoals>clean verify asciidoctor:process-asciidoc scm:publish-scm</preparationGoals>
 					<tagNameFormat>@{project.version}</tagNameFormat>
 					<scmCommentPrefix>[maven-release-plugin][skip ci]</scmCommentPrefix>
 				</configuration>
