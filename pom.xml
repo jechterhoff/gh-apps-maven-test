@@ -322,7 +322,7 @@
 						</configuration>
 					</execution>
 					<execution>
-						<id>copy-resources-documentation</id>
+						<id>copy-resources-documentation1</id>
 						<phase>package</phase>
 						<goals>
 							<goal>copy-resources</goal>
@@ -335,6 +335,24 @@
 									<excludes>
 										<exclude>javadoc/**</exclude>
 									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
+						<id>copy-resources-documentation2</id>
+						<phase>package</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${project.build.directory}/documentation</outputDirectory>
+							<resources>
+								<resource>
+									<directory>${project.build.directory}/gh-pages</directory>
+									<includes>
+										<include>index.html</include>
+									</includes>
 								</resource>
 							</resources>
 						</configuration>
