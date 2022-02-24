@@ -1,1 +1,0 @@
-memberSearchIndex = [{"p":"org.example.GitHubAppsMavenTest","c":"Main","l":"Main()","url":"%3Cinit%3E()"},{"p":"org.example.GitHubAppsMavenTest","c":"Main","l":"main(String[])","url":"main(java.lang.String[])"}]
