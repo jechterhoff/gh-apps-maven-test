@@ -264,6 +264,22 @@
 				</executions>
 			</plugin>
 			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>3.3.2</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>javadoc</goal>
+						</goals>
+						<configuration>
+							<reportOutputDirectory>${project.build.directory}/gh-pages/${project.version}</reportOutputDirectory>
+							<destDir>javadoc</destDir>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>3.2.0</version>
 				<executions>
@@ -316,6 +332,9 @@
 							<resources>
 								<resource>
 									<directory>${project.build.directory}/gh-pages/${project.version}</directory>
+									<excludes>
+										<exclude>javadoc/**</exclude>
+									</excludes>
 								</resource>
 							</resources>
 						</configuration>
@@ -363,22 +382,6 @@
 			<!-- <artifactId>maven-deploy-plugin</artifactId> -->
 			<!-- <version>3.0.0-M1</version> -->
 			<!-- </plugin> -->
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.3.2</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>javadoc</goal>
-						</goals>
-						<configuration>
-							<reportOutputDirectory>${project.build.directory}/gh-pages/${project.version}</reportOutputDirectory>
-							<destDir>javadoc</destDir>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 			<!-- From https://stackoverflow.com/questions/28859942/how-do-i-get-the-maven-gpg-plugin-to-use-a-passphrase-from-environment-variable/28860520, 
 				but untested due to lack of time. When manually performing a release, just 
 				watch out for the gpg prompt for now. -->
