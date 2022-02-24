@@ -416,7 +416,7 @@
 				<artifactId>maven-release-plugin</artifactId>
 				<version>2.5.3</version>
 				<configuration>
-      				<preparationGoals>clean verify asciidoctor:process-asciidoc scm:publish-scm</preparationGoals>
+      				<preparationGoals>clean verify asciidoctor:process-asciidoc scm-publish:publish-scm</preparationGoals>
 					<tagNameFormat>@{project.version}</tagNameFormat>
 					<scmCommentPrefix>[maven-release-plugin][skip ci]</scmCommentPrefix>
 				</configuration>
