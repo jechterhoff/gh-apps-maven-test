@@ -346,10 +346,11 @@
 							<goal>copy-resources</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/documentation</outputDirectory>
+							<outputDirectory>${project.build.directory}/gh-pages</outputDirectory>
 							<resources>
 								<resource>
-									<directory>${project.build.directory}/gh-pages</directory>
+									<directory>src/main</directory>
+									<filtering>true</filtering>
 									<includes>
 										<include>index.html</include>
 									</includes>
