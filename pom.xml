@@ -428,7 +428,7 @@
 			<!-- </plugin> -->
 			<plugin>
 				<artifactId>maven-scm-publish-plugin</artifactId>
-				<version>3.1.0</version>
+				<version>3.2.1</version>
 				<configuration>
 					<serverId>github.com</serverId>
 					<pubScmUrl>scm:git:https://github.com/jechterhoff/gh-apps-maven-test.git</pubScmUrl>
