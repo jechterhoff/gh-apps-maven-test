@@ -52,7 +52,7 @@
 		<dependency>
 			<groupId>org.codehaus.mojo</groupId>
 			<artifactId>build-helper-maven-plugin</artifactId>
-			<version>3.3.0</version>
+			<version>3.4.0</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.mycila/license-maven-plugin -->
 		<!-- mvn license:format will ensure that the license headers (with includes 
