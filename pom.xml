@@ -63,7 +63,7 @@
 		<dependency>
 			<groupId>com.mycila</groupId>
 			<artifactId>license-maven-plugin</artifactId>
-			<version>4.5</version>
+			<version>4.6</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -98,7 +98,7 @@
 			<plugin>
 				<groupId>com.mycila</groupId>
 				<artifactId>license-maven-plugin</artifactId>
-				<version>4.5</version>
+				<version>4.6</version>
 				<configuration>
 					<header>misc/license_header.txt</header>
 					<includes>
